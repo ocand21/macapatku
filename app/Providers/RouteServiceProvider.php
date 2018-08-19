@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Hashids\Hashids;
+use App\Article;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -23,9 +25,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
+
+        Route::bind('article', function($value, $route) {
+          return $this->getModel(\App\Article::class, $value);
+        });
     }
 
     /**
@@ -69,5 +73,12 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+    private function getModel($model, $routeKey){
+      $id = \Hashids::connection($model)->decode($routeKey) [0] ?? null;
+      $modelInstansce = resolve($model);
+
+      return $modelInstansce->findOrFail($id);
     }
 }

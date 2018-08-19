@@ -10,7 +10,7 @@ use Auth;
 class AdminLoginController extends Controller
 {
     public function __construct(){
-      $this->middleware('guest:admin');
+      $this->middleware('guest:admin', ['except' => ['logout']]);
     }
 
     public function showLoginForm(){
@@ -31,10 +31,16 @@ class AdminLoginController extends Controller
         'password' => $request->password,], $request->remember)) {
 
         // Kondisi Jika Sukses
-        return redirect()->intented('admin.dashboard');
+        return redirect()->intended(route('admin.dashboard'));
       }
 
       // Kondisi Jika Gagal
       return redirect()->back()->withInput($request->only('email', 'remember'));
+    }
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect('/');
     }
 }
