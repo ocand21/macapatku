@@ -13,37 +13,40 @@
 
       <div class="col-lg-12">
 
-      <a href="{{route('article.create')}}" class="btn btn-primary" style="margin-bottom: 10px">Artikel Baru</a>
+      <a href="{{route('file.upload')}}" class="btn btn-primary" style="margin-bottom: 10px">Upload Berkas</a>
               <div class="card">
                 <div class="card-header d-flex align-items-center">
-                  <h3 class="h4">Artikel</h3>
+                  <h3 class="h4">Berkas</h3>
                 </div>
-                <div class="card-body table-responsive">
+                <div class="card-body">
                   <table width="100%" class="table table-striped  table-bordered" >
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Gambar</th>
                         <th>Judul</th>
-                        <th>Isi</th>
+                        <th>Path</th>
+                        <th>URL</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
-                    @foreach($drafts as $draft)
+
+                    @foreach($files as $file)
                     <tr class="odd gradeX">
-                        <td>{{ $draft->id}}</td>
-                        <td>
-                          <img src="{{ asset('users/images/articles/' . $draft->image) }}" class="img-responsive" style="height: 70px; width: 70px;">
-                        </td>
-                        <td>{{ substr($draft->title, 0, 30) }}{{ strlen($draft->title) > 30 ? "..." : "" }}</td>
-                        <td>{!! substr($draft->body, 0, 300) !!}{!! strlen($draft->body) > 300 ? "..." : "" !!}</td>
+                        <td>{{ $file->id}}</td>
+                        <td>{{ $file->title }}</td>
+                        <td>{{ $file->filename }}</td>
+                        <td><a href="{{ Storage::url($file->filename) }}">Unduh</a></td>
                         <td class="text-center">
-                          <a href="{{ route('draft.publish', $draft->id) }}"><i class="fa fa-pencil"></i></a>
-                          <a href="{{ route('draft.destroy', $draft->id) }}"><i class="fa fa-trash"></i></a>
+                          <form action="{{route('file.destroy', $file->id)}}" method="POST">
+                            <input type="submit" value="Hapus" class="btn btn-danger btn-block" data-toggle="confirmation">
+                            <input type="hidden" name="_token" value="{{Session::token()}}">
+                            {{method_field('DELETE')}}
+                          </form>
                         </td>
                     </tr>
                     @endforeach
+
                     </tbody>
                   </table>
                 </div>

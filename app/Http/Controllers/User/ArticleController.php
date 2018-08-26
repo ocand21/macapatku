@@ -21,6 +21,8 @@ class ArticleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+
     }
 
     /**
@@ -30,15 +32,21 @@ class ArticleController extends Controller
      */
 
 
-    public function index()
+    public function published()
     {
         $id = Auth::user()->id;
 
-        $articles = Article::where('user_id', $id)->orderBy('id', 'desc')->get();
+        $articles = Article::where('user_id', '=', $id)->where('acceptable', '=', 1)->orderBy('id', 'desc')->get();
 
+        return view('user.articles.published', compact('articles'));
+    }
 
+    public function pending(){
+      $id = Auth::user()->id;
 
-        return view('user.articles.index')->withArticles($articles);
+      $articles = Article::where('user_id', '=', $id)->where('acceptable', '=', 0)->orderBy('id', 'desc')->get();
+
+      return view('user.articles.pending')->withArticles($articles);
     }
 
     /**
@@ -129,7 +137,7 @@ class ArticleController extends Controller
 
         Session::flash('flash_message', 'Artikel berhasil diterbitkan!');
 
-        return redirect()->route('article.show', Hashids::encode($article->id));
+        return redirect()->route('article.show', $article->id);
     }
 
     /**
@@ -138,10 +146,10 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show($id)
     {
       // $decode_id = Hashids::decode($id);
-      // $article = Article::with('users')->where('id', $id)->firstOrFail();
+      $article = Article::with('users')->where('id', $id)->firstOrFail();
 
       return view('user.articles.show', compact('article'));
     }

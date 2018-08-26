@@ -1,9 +1,9 @@
 @extends('user.main')
-@section('title', '| Dashboard Pengguna')
+@section('title', '| Artikel Pending')
 @section('content')
       <header class="page-header">
         <div class="container-fluid">
-          <h2 class="no-margin-bottom">Artikel</h2>
+          <h2 class="no-margin-bottom">Artikel Pending</h2>
         </div>
       </header>
       <section class="tables">
@@ -16,10 +16,10 @@
       <a href="{{route('article.create')}}" class="btn btn-primary" style="margin-bottom: 10px">Artikel Baru</a>
               <div class="card">
                 <div class="card-header d-flex align-items-center">
-                  <h3 class="h4">Artikel</h3>
+                  <h3 class="h4">Artikel Pending</h3>
                 </div>
-                <div class="card-body">
-                  <table width="100%" class="table table-striped table-responsive table-bordered" >
+                <div class="card-body table-responsive">
+                  <table width="100%" class="table table-striped table-bordered" >
                     <thead>
                       <tr>
                         <th>#</th>
@@ -48,8 +48,8 @@
                         <td>{{ substr($article->title, 0, 30) }}{{ strlen($article->title) > 30 ? "..." : "" }}</td>
                         <td>{!! substr($article->body, 0, 300) !!}{!! strlen($article->body) > 300 ? "..." : "" !!}</td>
                         <td class="text-center">
-                          <a href="{{ route('article.show', Hashids::connection('')->encode($article->id)) }}"><i class="fa fa-search"></i></a>
-                          <a href="{{ route('article.edit', Hashids::encode($article->id)) }}"><i class="fa fa-pencil"></i></a>
+                          <a href="{{ route('article.show', $article->id) }}"><i class="fa fa-search"></i></a>
+                          <a href="{{ route('article.edit', $article->id) }}"><i class="fa fa-pencil"></i></a>
                         </td>
                     </tr>
                     @endforeach

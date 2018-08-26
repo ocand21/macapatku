@@ -4,6 +4,7 @@
     <div class="page-content d-flex align-items-stretch">
       @include('user.partials._sidebar')
         <div class="content-inner">
+          @include('user.partials._message')
           @yield('content')
           @include('user.partials._footer')
         </div>

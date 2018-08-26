@@ -19,10 +19,11 @@
                   <h3 class="h4">Artikel</h3>
                 </div>
                 <div class="card-body table-responsive">
-                  <table width="100%" class="table table-striped  table-bordered" >
+                  <table width="100%" class="table table-striped table-bordered" >
                     <thead>
                       <tr>
                         <th>#</th>
+                        <th>Status</th>
                         <th>Gambar</th>
                         <th>Judul</th>
                         <th>Isi</th>
@@ -30,20 +31,29 @@
                       </tr>
                     </thead>
                     <tbody>
-                    @foreach($drafts as $draft)
+
+                    @foreach($articles as $article)
                     <tr class="odd gradeX">
-                        <td>{{ $draft->id}}</td>
+                        <td>{{ $article->id}}</td>
                         <td>
-                          <img src="{{ asset('users/images/articles/' . $draft->image) }}" class="img-responsive" style="height: 70px; width: 70px;">
+                          @if($article->acceptable==0)
+                          <button class="btn btn-warning">PENDING</button>
+                          @else
+                          <button class="btn btn-info">DITERBITKAN</button>
+                          @endif
                         </td>
-                        <td>{{ substr($draft->title, 0, 30) }}{{ strlen($draft->title) > 30 ? "..." : "" }}</td>
-                        <td>{!! substr($draft->body, 0, 300) !!}{!! strlen($draft->body) > 300 ? "..." : "" !!}</td>
+                        <td>
+                          <img src="{{ asset('users/images/articles/' . $article->image) }}" style="height: 70px; width: 70px">
+                        </td>
+                        <td>{{ substr($article->title, 0, 30) }}{{ strlen($article->title) > 30 ? "..." : "" }}</td>
+                        <td>{!! substr($article->body, 0, 300) !!}{!! strlen($article->body) > 300 ? "..." : "" !!}</td>
                         <td class="text-center">
-                          <a href="{{ route('draft.publish', $draft->id) }}"><i class="fa fa-pencil"></i></a>
-                          <a href="{{ route('draft.destroy', $draft->id) }}"><i class="fa fa-trash"></i></a>
+                          <a href="{{ route('article.show', $article->id) }}"><i class="fa fa-search"></i></a>
+                          <a href="{{ route('article.edit', $article->id) }}"><i class="fa fa-pencil"></i></a>
                         </td>
                     </tr>
                     @endforeach
+
                     </tbody>
                   </table>
                 </div>

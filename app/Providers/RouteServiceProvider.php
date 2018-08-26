@@ -27,9 +27,6 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        Route::bind('article', function($value, $route) {
-          return $this->getModel(\App\Article::class, $value);
-        });
     }
 
     /**
