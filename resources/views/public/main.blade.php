@@ -8,10 +8,10 @@
         @yield('content')
         </div>
         @include('public.partials._sidebar')
+        @yield('news')
       </div>
     </div>
-  </div>
-
+    
   @include('public.partials._footer')
 
 @include('public.partials._js')

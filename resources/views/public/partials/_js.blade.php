@@ -22,6 +22,6 @@
 <script type="text/javascript" src="/public/js/bootstrap-3.1.1.min.js"></script>
 
 <!--//JS-->
-
+@yield('js')
 </body>
 </html>

@@ -8,7 +8,9 @@ use Vinkla\Hashids\Facades\Hashids;
 use App\User;
 use App\Article;
 use App\Draft;
+use App\Category;
 
+use Alert;
 use Session;
 use Image;
 use Auth;
@@ -56,8 +58,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $user = User::all();
-        return view('user.articles.create');
+        $category = Category::get();
+        return view('user.articles.create', compact('category'));
     }
 
     public function storeDraft(Request $request){
@@ -90,6 +92,7 @@ class ArticleController extends Controller
 
 
       Session::flash('flash_message', 'Ditambahkan ke dalam draft!');
+      // Alert::success('Berhasil', 'Artikel Ditambahkan ke dalam draft!')->autoclose(5000);
 
       return redirect()->back();
     }
@@ -119,6 +122,7 @@ class ArticleController extends Controller
         $article->title = $request->input('title');
         $article->slug = str_slug($request->input('title'));
         $article->caption = $request->input('caption');
+        $article->category_id = $request->input('category_id');
         $article->body = $request->input('body');
         $article->user_id = $request->input('user_id');
         $article->acceptable = 0;
@@ -134,6 +138,7 @@ class ArticleController extends Controller
 
         $article->save();
 
+        // Alert::success('Artikel telah dibuat!', 'Berhasil')->autoclose(15000);
 
         Session::flash('flash_message', 'Artikel berhasil diterbitkan!');
 
@@ -231,8 +236,9 @@ class ArticleController extends Controller
         $article->delete();
         unlink($oldPath);
 
+        // Alert::success('Artikel telah dihapus!', 'Berhasil')->autoclose(15000);
         Session::flash('flash_message','Artikel berhasil dihapus!');
-        return redirect()->route('article.index');
+        return redirect()->route('article.published');
 
     }
 }

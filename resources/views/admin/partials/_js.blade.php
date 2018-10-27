@@ -1,40 +1,32 @@
-<!-- jQuery -->
-    <script src="/users/vendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/users/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <script src="/users/vendor/bootstrap/js/bootstrap-confirmation.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="/users/vendor/metisMenu/metisMenu.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="/users/dist/js/sb-admin-2.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="/admin/vendor/chart.js/Chart.min.js"></script>
+<script src="/admin/vendor/datatables/jquery.dataTables.js"></script>
+<script src="/admin/vendor/datatables/dataTables.bootstrap4.js"></script>
 
-    <script src="/users/tinymce/tinymce.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/admin/js/sb-admin.min.js"></script>
 
-    <script>
-      tinymce.init({
-        selector: 'textarea',
-        plugins: 'image'
-      });
-    </script>
-
-    <!-- DataTables JavaScript -->
-<script src="/users/vendor/datatables/js/jquery.dataTables.min.js"></script>
-<script src="/users/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-<script src="/users/vendor/datatables-responsive/dataTables.responsive.js"></script>
+<!-- Demo scripts for this page-->
+<script src="/admin/js/demo/datatables-demo.js"></script>
+<script src="/admin/js/demo/chart-area-demo.js"></script>
+<script src="/admin/tinymce/tinymce.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true
-        });
-    });
+  tinymce.init({
+    selector: 'textarea',
+    plugins: 'image'
+  });
 </script>
 
-
+@yield('js')
 </body>
 
 </html>

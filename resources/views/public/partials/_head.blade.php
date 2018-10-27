@@ -12,6 +12,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="MacapatKu, Artikel Macapat, Macapat, Artikel" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link rel="shortcut icon" href="{{ asset('public/images/favicon.png')}}">
 <link href="/public/css/bootstrap-3.1.1.min.css" rel="stylesheet" type="text/css">
 <!-- Custom Theme files -->
 <link href="/public/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all" />
@@ -29,5 +30,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				});
 			});
 </script>
+
+@yield('css')
 </head>
 <body>

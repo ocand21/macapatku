@@ -6,7 +6,6 @@
         <div class="content-inner">
           @include('user.partials._message')
           @yield('content')
-          @include('user.partials._footer')
         </div>
     </div>
   </div>

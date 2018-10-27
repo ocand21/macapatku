@@ -44,6 +44,15 @@
                       <input type="text" name="title" class="form-control" required>
                     </div>
                     <div class="form-group">
+                      <label for="">Kategori</label>
+                      <select class="form-control" name="category_id">
+                        <option value="-">--Pilih Kategori--</option>
+                        @foreach($category as $categories)
+                        <option value="{{$categories->id}}">{{$categories->name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group">
                       <label for="">Isi Artikel</label>
                       <textarea class="form-control" rows="10" name="body"></textarea>
                       <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">

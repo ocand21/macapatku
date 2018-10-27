@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>MacapatKu - Login User</title>
+	<title>MacapatKu - @yield('title')</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="icon" type="/users/login/image/png" href="images/icons/favicon.ico"/>
+	<link rel="shortcut icon" href="{{ asset('public/images/favicon.png')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/users/login/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->

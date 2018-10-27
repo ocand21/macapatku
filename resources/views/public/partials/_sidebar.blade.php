@@ -1,6 +1,6 @@
 <div class="col-md-4 mag-inner-right">
 				  <div class="connect">
-				    <h4 class="side" >STAY CONNECTED</h4>
+				    <h4 class="side" >TEMUKAN KAMI</h4>
 					  <ul class="stay">
 					    <li class="c5-element-facebook"><a href="#"><span class="icon"></span><h5>700</h5><span class="text">Followers</span></a></li>
                         <li class="c5-element-twitter"><a href="#"><span class="icon1"></span><h5>201</h5><span class="text">Followers</span></a></li>
@@ -9,151 +9,47 @@
 
 					  </ul>
 			      </div>
-				    <div class="modern">
-				      <h4 class="side">Make it modern</h4>
-					  <div id="example1">
-			 	        <div id="owl-demo" class="owl-carousel text-center">
-					      <div class="item">
-
-							<img class="img-responsive lot" src="images/p1.jpg" alt=""/>
-					     </div>
-						 <div class="item">
-
-							<img class="img-responsive lot" src="images/p2.jpg" alt=""/>
-					    </div>
-						<div class="item">
-
-							<img class="img-responsive lot" src="images/p33.jpg" alt=""/>
-					    </div>
-						<div class="item">
-
-							<img class="img-responsive lot" src="images/p1.jpg" alt=""/>
-					</div>
-					<div class="item">
-
-							<img class="img-responsive lot" src="images/p1.jpg" alt=""/>
-					</div>
-						<div class="item">
-
-							<img class="img-responsive lot" src="images/p2.jpg" alt=""/>
-					</div>
-						<div class="item">
-
-							<img class="img-responsive lot" src="images/p33.jpg" alt=""/>
-					</div>
-						<div class="item">
-
-							<img class="img-responsive lot" src="images/p1.jpg" alt=""/>
-					</div>
-				</div>
-				</div>
-				<!-- requried-jsfiles-for owl -->
-										<script src="js/owl.carousel.js"></script>
-										  <script>
-										  $(document).ready(function() {
-											   $("#owl-demo").owlCarousel({
-												items :1,
-												lazyLoad : true,
-												autoPlay : false,
-												navigation : true,
-												navigationText :  true,
-												pagination : false,
-												responsiveBreakpoints: {
-										portrait: {
-											changePoint:480,
-											visibleItems: 2
-										},
-										landscape: {
-											changePoint:640,
-											visibleItems: 2
-										},
-										tablet: {
-											changePoint:768,
-											visibleItems: 3
-										}
-									}
-												});
-										  });
-										</script>
-						<!-- //requried-jsfiles-for owl -->
-						</div>
-						   <!--/start-sign-up-->
+				   	   <!--/start-sign-up-->
 						     <div class="sign_main">
-							       <h4 class="side">Sign  Up  for    Newsletter</h4>
-								   <div class="sign_up">
-										<p class="sign">Sign up to receive our free newsletters!</p>
-										<form>
-											<input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
-											<input type="text" class="text" value="Email Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}">
-											<input type="submit" value="submit">
-										</form>
-										<p class="spam">We do not spam. We value your privacy!</p>
-									</div>
+
 							</div>
+							<!--  -->
+
 							  <!--//end-sign-up-->
-							 <h4 class="side">Popular Posts</h4>
+							 <h4 class="side">Artikel Terpopuler</h4>
 								<div class="edit-pics">
 							      <div class="editor-pics">
+									  @foreach($popularArticles as $article)
 										 <div class="col-md-3 item-pic">
-										   <img src="images/f4.jpg" class="img-responsive" alt=""/>
-
+											<img class="img-responsive img-thumbnail" src="{{ asset('users/images/articles/' . $article->image) }}" alt=""/>
 										   </div>
 											<div class="col-md-9 item-details">
-												<h5 class="inner two"><a href="single.html">New iPad App to stimulate your Guitar</a></h5>
-												 <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
+												<h5 class="inner two"><a href="{{route('article.single', $article->slug )}}">{{$article->title}}</a></h5>
+											<div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>{{date('d F, Y', strtotime($article->created_at))}} <a href="#"><i class="glyphicon glyphicon-comment"></i>{{$article->comments()->count()}} </a></div>
 											 </div>
 											<div class="clearfix"></div>
-										</div>
-										<div class="editor-pics">
-										 <div class="col-md-3 item-pic">
-										   <img src="images/f1.jpg" class="img-responsive" alt=""/>
-
-										   </div>
-											<div class="col-md-9 item-details">
-												<h5 class="inner two"><a href="single.html">New iPad App to stimulate your Guitar</a></h5>
-												 <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
-											 </div>
-											<div class="clearfix"></div>
-										</div>
-										<div class="editor-pics">
-										 <div class="col-md-3 item-pic">
-										   <img src="images/f1.jpg" class="img-responsive" alt=""/>
-
-										   </div>
-											<div class="col-md-9 item-details">
-												<h5 class="inner two"><a href="single.html">New iPad App to stimulate your Guitar</a></h5>
-												 <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
-											 </div>
-											<div class="clearfix"></div>
-										</div>
-										<div class="editor-pics">
-										 <div class="col-md-3 item-pic">
-										   <img src="images/f4.jpg" class="img-responsive" alt=""/>
-
-										   </div>
-											<div class="col-md-9 item-details">
-												<h5 class="inner two"><a href="single.html">New iPad App to stimulate your Guitar</a></h5>
-												 <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
-											 </div>
-											<div class="clearfix"></div>
+										@endforeach
 										</div>
 									</div>
 							<!--//edit-pics-->
 							<!--/top-news-->
 								<div class="top-news">
-								 <h4 class="side">Top News</h4>
+								 <h4 class="side">Berita Terpopuler</h4>
 							      <div class="top-inner">
+									@foreach($popularNews as $news)
 								     <div class="top-text">
-										 <a href="single.html"><img src="images/slp.jpg" class="img-responsive" alt=""/></a>
-										 <h5 class="top"><a href="single.html">POLL: HOW LONG DO YOU OFTEN SLEEP AT NIGHT</a></h5>
-										 <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
-								     </div>
-									  <div class="top-text two">
+										 <a href="{{$news->slug}}"><img class="img-responsive img-thumbnail" src="{{ asset('admin/images/news/' . $news->image) }}" alt="img25"/></a>
+										 <h5 class="top"><a href="{{route('news.single', $news->slug)}}">{{$news->title}}</a></h5>
+										 <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>{{date('d F, Y', strtotime($news->created_at))}}</i>0 </a></div>
+									 </div>
+									 @endforeach
+									  <!-- <div class="top-text two">
 										 <a href="single.html"><img src="images/dest.jpg" class="img-responsive" alt=""/></a>
 										 <h5 class="top"><a href="single.html">YOU’VE NEVER SEEN VIVID SYDNEY QUITE LIKE THIS</a></h5>
 										 <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
-								     </div>
+								     </div> -->
 								  </div>
 	                            </div>
 							<!--//top-news-->
 						</div>
+						<div class="clearfix"></div>
