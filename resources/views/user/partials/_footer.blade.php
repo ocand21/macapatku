@@ -1,11 +1,5 @@
-<footer class="main-footer">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-6">
-				<p>MacapatKU &copy; 2018</p>
-			</div>
-
-		</div>
-	</div>
-</footer>
-</div>
+<footer class="footer">
+    <div class="container-fluid clearfix">
+      <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="https://emacapatku.com/" target="_blank">E-MacapatKU</a>. All rights reserved.</span>
+    </div>
+  </footer>

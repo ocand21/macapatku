@@ -34,7 +34,19 @@ Route::prefix('user')->group(function(){
   Route::post('/myprofile/upload/profilepicture', 'User\ProfileController@uploadPicture')->name('changePicture');
 
 
-  Auth::routes();
+  $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
+  $this->post('login', 'Auth\LoginController@login');
+  $this->post('logout', 'Auth\LoginController@logout')->name('logout');
+
+        // Registration Routes...
+  $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+  $this->post('register', 'Auth\RegisterController@register');
+
+        // Password Reset Routes...
+  $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+  $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+  $this->post('password/reset', 'Auth\ResetPasswordController@reset');
+  Route::get('/password/reset/{token}/{email}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
   Route::get('/dashboard', 'User\UserAppController@index')->name('dashboard');
 
@@ -60,6 +72,7 @@ Route::prefix('user')->group(function(){
 });
 
 Route::prefix('admin')->group(function(){
+
 
   Route::resource('serat', 'Admin\SeratController');
 
@@ -102,4 +115,9 @@ Route::prefix('admin')->group(function(){
   Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
   Route::get('/dashboard', 'AdminController@index')->name('admin.dashboard');
   Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+
+  $this->get('password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+  $this->post('password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+  $this->post('password/reset', 'Auth\AdminResetPasswordController@reset');
+  Route::get('/password/reset/{token}/{email}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 });

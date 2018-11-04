@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\ResetPassword;
 
 use App\Article;
 use App\Draft;
@@ -18,7 +19,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'address', 'aboutme', 'password','slug','provider','provider_id',
+        'name', 'email', 'phone', 'address', 'birth_date', 'gender', 'job', 'aboutme', 'password','slug','provider','provider_id',
+    ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'birth_date'
     ];
 
     /**
@@ -29,6 +36,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
+    }
 
     public function articles(){
       return $this->hasMany(Article::class, 'user_id');

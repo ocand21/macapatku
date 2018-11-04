@@ -1,26 +1,67 @@
-<!-- Side Navbar -->
-<nav class="side-navbar">
-  <!-- Sidebar Header-->
-  <div class="sidebar-header d-flex align-items-center">
-    @if(Auth::user()->picture)
-    <div class="avatar"><img src="{{ asset('users/images/avatar/' . Auth::user()->picture) }}" alt="..." class="img-fluid rounded-circle"></div>
-    @else
-    <div class="avatar"><img src="{{ asset('users/images/avatar/avatar.png') }}" alt="..." class="img-fluid rounded-circle"></div>
-    @endif
-    <div class="title">
-      <h1 class="h4">{{Auth::user()->name}}</h1>
-      <p>Web Designer</p>
-    </div>
-  </div>
-  <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
-  <ul class="list-unstyled">
-    <li class="active"> <a href="{{route('dashboard')}}"><i class="icon-home"></i>Home</a></li>
-    <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Artikel</a>
-    <ul id="dashvariants" class="collapse list-unstyled">
-      <li><a href="{{route('article.published')}}">Diterbitkan</a></li>
-      <li><a href="{{route('article.pending')}}">Pending</a></li>
-      <li><a href="{{route('draft.index')}}">Draft</a></li>
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+      <li class="nav-item nav-category">
+        <span class="nav-link">UMUM</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('dashboard')}}">
+          <span class="menu-title">Dashboard</span>
+          <i class="icon-speedometer menu-icon"></i>
+        </a>
+      </li>
+      
+      <li class="nav-item nav-category">
+        <span class="nav-link">Postingan</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-artikel" aria-expanded="false" aria-controls="ui-basic">
+          <span class="menu-title">Artikel</span>
+          <i class="icon-grid menu-icon"></i>
+        </a>
+        <div class="collapse" id="ui-artikel">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{route('article.create')}}">Buat Artikel</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('article.index')}}">Daftar Artikel</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('draft.index')}}">
+          <span class="menu-title">Draft</span>
+          <i class="icon-grid menu-icon"></i>
+        </a>
+      </li>
+      
+      <li class="nav-item nav-category">
+        <span class="nav-link">Dokumen</span>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#ui-dokumen" aria-expanded="false" aria-controls="ui-basic">
+            <span class="menu-title">Dokumen</span>
+            <i class="icon-layers menu-icon"></i>
+          </a>
+          <div class="collapse" id="ui-dokumen">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="{{route('file.create')}}">Unggah Dokumen</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{route('file.index')}}">Daftar Dokumen</a></li>
+            </ul>
+          </div>
+        </li>
+        
+        <li class="nav-item nav-category">
+            <span class="nav-link">PENGATURAN</span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-akun" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-title">Akun</span>
+              <i class="icon-wrench menu-icon"></i>
+            </a>
+            <div class="collapse" id="ui-akun">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{route('myprofile')}}">Profil</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('user.logout')}}">Keluar</a></li>
+              </ul>
+            </div>
+          </li>
     </ul>
-  </li>
-  <li> <a href="{{route('file.index')}}"> <i class="fa fa-file"></i> Berkas </a></li>
-</nav>
+  </nav>

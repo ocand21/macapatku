@@ -66,7 +66,7 @@
             <button type="submit" class="btn btn-primary btn-block">{{__('Login')}}</button>
           </form>
           <div class="text-center">
-            <a class="d-block small" href="{{route('password.request')}}">{{__('Lupa Password?')}}</a>
+            <a class="d-block small" href="{{route('admin.password.request')}}">{{__('Lupa Password?')}}</a>
           </div>
         </div>
       </div>

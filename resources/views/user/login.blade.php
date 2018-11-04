@@ -45,7 +45,7 @@
         </div>
 
         <div>
-          <a href="#" class="txt1">
+        <a href="{{ route('password.request')}}" class="txt1">
             Lupa Password?
           </a>
         </div>

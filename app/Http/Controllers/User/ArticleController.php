@@ -33,6 +33,14 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function index(){
+        $id = Auth::user()->id;
+
+        $articles = Article::where('user_id', '=', $id)->orderBy('id', 'desc')->get();
+
+        return view('user.articles.index', compact('articles'));
+    }
+
 
     public function published()
     {
@@ -42,6 +50,8 @@ class ArticleController extends Controller
 
         return view('user.articles.published', compact('articles'));
     }
+
+    
 
     public function pending(){
       $id = Auth::user()->id;
